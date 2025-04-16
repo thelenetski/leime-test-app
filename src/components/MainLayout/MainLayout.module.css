@@ -1,0 +1,17 @@
+.mainWrapper {
+  min-width: 320px;
+  max-width: 375px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .mainWrapper {
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .mainWrapper {
+    max-width: 1440px;
+  }
+}

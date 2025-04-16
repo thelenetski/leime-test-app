@@ -10,8 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@heroui/card": "^2.2.16",
+    "@heroui/image": "^2.2.10",
+    "@heroui/navbar": "^2.2.15",
+    "@heroui/react": "^2.8.0-beta.1",
     "@hookform/resolvers": "^5.0.1",
     "@reduxjs/toolkit": "^2.6.1",
+    "@tailwindcss/vite": "^4.1.4",
     "axios": "^1.8.4",
     "clsx": "^2.1.1",
     "react": "^19.0.0",
@@ -20,6 +25,7 @@
     "react-modal": "^3.16.3",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.5.0",
+    "tailwindcss": "^4.1.4",
     "yup": "^1.6.1"
   },
   "devDependencies": {
