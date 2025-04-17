@@ -44,7 +44,7 @@ const EditMemForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full">
       <h4 className="font-bold text-lg mb-4 uppercase">Edit mem</h4>
-      <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Input
           isReadOnly
           defaultValue={data._id}

@@ -8,7 +8,17 @@
   max-width: 375px;
   height: fit-content;
   margin: 0 16px;
-  box-shadow: 0px 0px 120px #000;
+  box-shadow: 0px 0px 120px #0000005e;
+  animation: appearance 0.6s;
+}
+
+@keyframes appearance {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .modalOverlay {
