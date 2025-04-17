@@ -43,7 +43,7 @@ const EditMemForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-      <h4 className="font-bold text-lg mb-4 uppercase">Edit mem</h4>
+      <h4 className="font-bold text-lg mb-4 uppercase">Edit meme</h4>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Input
           isReadOnly
