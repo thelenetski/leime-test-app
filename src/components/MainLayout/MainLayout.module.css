@@ -1,17 +1,23 @@
-.mainWrapper {
+.container {
   min-width: 320px;
   max-width: 375px;
   margin: 0 auto;
+  padding: 10px;
+}
+
+.blur {
+  filter: blur(4px);
+  transition: 1s;
 }
 
 @media screen and (min-width: 768px) {
-  .mainWrapper {
+  .container {
     max-width: 768px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .mainWrapper {
+  .container {
     max-width: 1440px;
   }
 }

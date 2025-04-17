@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const modalTypes = {
   editMem: "edit-mem",
+  openMem: "open-mem",
 };
 
 const modalSlice = createSlice({
@@ -17,6 +18,11 @@ const modalSlice = createSlice({
       state.type = modalTypes.editMem;
       state.content = action.payload;
     },
+    openMem(state, action) {
+      state.isOpen = true;
+      state.type = modalTypes.openMem;
+      state.content = action.payload;
+    },
     closeModal(state) {
       state.isOpen = false;
       state.type = null;
@@ -25,5 +31,5 @@ const modalSlice = createSlice({
   },
 });
 
-export const { openEditMem, closeModal } = modalSlice.actions;
+export const { openEditMem, openMem, closeModal } = modalSlice.actions;
 export const modalReducer = modalSlice.reducer;

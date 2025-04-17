@@ -23,15 +23,16 @@ const memesSlice = createSlice({
       .addCase(getMemes.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = action.payload;
+        state.items = action.payload.results;
       })
       .addCase(getMemes.rejected, handleRejected)
       .addCase(editMeme.pending, handlePending)
       .addCase(editMeme.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
+
         const index = state.items.findIndex(
-          (task) => task.id === action.payload.id
+          (task) => task._id === action.payload._id
         );
         state.items.splice(index, 1, action.payload);
       })

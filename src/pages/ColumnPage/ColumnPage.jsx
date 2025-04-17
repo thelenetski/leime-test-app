@@ -6,7 +6,7 @@ import {
   TableRow,
   TableCell,
   Tooltip,
-  Image,
+  User,
 } from "@heroui/react";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +14,7 @@ import { selectMemes } from "../../redux/memes/selectors";
 import { openEditMem } from "../../redux/modal/slice";
 
 export const columns = [
-  { name: "MEM", uid: "mem" },
+  { name: "MEME", uid: "meme" },
   { name: "NAME", uid: "title" },
   { name: "LIKES", uid: "likes" },
   { name: "ACTIONS", uid: "actions" },
@@ -61,58 +61,63 @@ export const EditIcon = (props) => {
 };
 
 const ColumnPage = () => {
-  const { results } = useSelector(selectMemes);
+  const results = useSelector(selectMemes);
   const dispatch = useDispatch();
 
-  const renderCell = useCallback((results, columnKey) => {
-    const cellValue = results && results[columnKey];
+  const renderCell = useCallback(
+    (results, columnKey) => {
+      const cellValue = results && results[columnKey];
 
-    switch (columnKey) {
-      case "mem":
-        return (
-          <div className="flex justify-center">
-            <Image src={results.img} className="w-[50px] rounded-lg" />
-          </div>
-        );
-      case "title":
-        return (
-          <div className="flex flex-col">
-            <p className="text-bold text-sm capitalize">{cellValue}</p>
-          </div>
-        );
-      case "likes":
-        return <p>{cellValue}</p>;
-      case "actions":
-        return (
-          <div className="flex justify-center">
-            <Tooltip content="Edit mem">
-              <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <EditIcon
-                  onClick={() => dispatch(openEditMem({ ...results }))}
-                />
-              </span>
-            </Tooltip>
-          </div>
-        );
-      default:
-        return cellValue;
-    }
-  }, []);
-  // console.log(results);
+      switch (columnKey) {
+        case "meme":
+          return (
+            <User
+              avatarProps={{ src: results.img }}
+              description={results._id}
+              name="ID"
+            >
+              {results._id}
+            </User>
+          );
+        case "title":
+          return (
+            <div className="flex flex-col">
+              <p className="text-bold text-sm capitalize">{cellValue}</p>
+            </div>
+          );
+        case "likes":
+          return <p>{cellValue}</p>;
+        case "actions":
+          return (
+            <div className="relative flex items-center gap-2">
+              <Tooltip content="Edit meme">
+                <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                  <EditIcon
+                    onClick={() => dispatch(openEditMem({ ...results }))}
+                  />
+                </span>
+              </Tooltip>
+            </div>
+          );
+        default:
+          return cellValue;
+      }
+    },
+    [dispatch]
+  );
+
   return (
     results && (
       <>
-        <Table aria-label="Memes table" className="bg-gray-700 rounded-lg mx-2">
-          <TableHeader columns={columns} className="rounded-lg">
+        <Table isStriped aria-label="Memes table">
+          <TableHeader columns={columns}>
             {(column) => (
-              <TableColumn className="bg-gray-600 p-1 py-2" key={column.uid}>
-                {column.name}
-              </TableColumn>
+              <TableColumn key={column.uid}>{column.name}</TableColumn>
             )}
           </TableHeader>
           <TableBody items={results}>
             {(item) => (
-              <TableRow key={item._id} className="mt-4">
+              <TableRow key={item._id}>
                 {(columnKey) => (
                   <TableCell>{renderCell(item, columnKey)}</TableCell>
                 )}

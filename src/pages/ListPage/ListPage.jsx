@@ -7,7 +7,7 @@ const ListPage = () => {
 
   return (
     <ul className="grid grid-cols-1 gap-4 md:grid-cols-4">
-      {memes?.results?.map((item, index) => {
+      {memes?.map((item, index) => {
         return (
           <li key={item._id}>
             <CardMem data={item} index={index} />
